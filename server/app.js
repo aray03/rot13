@@ -36,7 +36,7 @@ app.get('/encrypt', (request, response)  => {
         for(var z=0; z < abc.length; z++){
 
             if(ciphertext[n] === (abc[z])){
-                console.log('I think something worked finally!');
+                
                 
                 var temp = abc[(z+key)%26];
 
@@ -56,7 +56,7 @@ app.get('/encrypt', (request, response)  => {
 
     }
     ciphertext = fulltemp;
-
+    console.log('Word Scrambled!');
     response.status(200).send( ciphertext )
 });
 
