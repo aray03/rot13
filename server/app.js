@@ -24,27 +24,28 @@ app.get('/encrypt', (request, response)  => {
 
     var plaintext = request.query.plaintext;
     //TODO: encrypt text
-    plaintext = plaintext.toLowerCase();
+    plaintext = plaintext;
     var ciphertext = plaintext;
 
     
     var key = 13;
     var abc = "abcdefghijklmnopqrstuvwxyz";
+    var abcCap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var fulltemp = "";
 
     for(var n=0; n < plaintext.length; n++){
         for(var z=0; z < abc.length; z++){
 
             if(ciphertext[n] === (abc[z])){
-                
-                
                 var temp = abc[(z+key)%26];
-
                 var fulltemp = fulltemp + temp;
-
-               // ciphertext[n] = temp;
-               // console.log(ciphertext[n] + " " + abc[z+key]);
             }
+            
+            else if (ciphertext[n] === (abcCap[z])){
+                var temp = abcCap[(z+key)%26];
+                var fulltemp = fulltemp + temp;
+            }
+            
             else if(ciphertext[n] == (" ")){
                 var fulltemp = fulltemp + " ";
             }
